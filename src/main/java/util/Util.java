@@ -153,6 +153,7 @@ public class Util {
                         if (p != -1) {
                             var p2 = line.indexOf(' ', p-5);
                             int s = Integer.parseInt(line.substring(p2+1, p));
+                            System.out.printf("Submitting again in %ds\n", s);
                             try {
                                 Thread.sleep(s*1000L);
                             } catch (InterruptedException e) {
