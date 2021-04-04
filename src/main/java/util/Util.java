@@ -148,6 +148,20 @@ public class Util {
                 }
                 if (print) {
                     System.out.println(line);
+                    if (line.contains("You gave an answer too")) {
+                        var p = line.indexOf("s left to wait");
+                        if (p != -1) {
+                            var p2 = line.indexOf(' ', p-5);
+                            int s = Integer.parseInt(line.substring(p2+1, p));
+                            try {
+                                Thread.sleep(s*1000L);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                            submit(part, answer);
+                            return;
+                        }
+                    }
                 }
                 if (line.equals("<main>")) {
                     print = true;
